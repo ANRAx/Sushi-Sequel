@@ -1,7 +1,7 @@
 let express = require("express");
 
 let router = express.Router();
-let burger = require("../models/sushi.js");
+let sushi = require("../models/sushi.js");
 
 // get route -> index
 router.get("/", function(req, res) {
@@ -10,7 +10,7 @@ router.get("/", function(req, res) {
 
 router.get("/burgers", function(req, res) {
     // express callback response by calling burger.selectAllBurger
-    burger.all(function(sushiData) {
+   sushi.all(function(sushiData) {
         // Wrapper for orm.js thats using MySQL query callback will return bruger_data, render to index with handlebar
         res.render("index", { sushi_data: shushiData})
     });
@@ -28,7 +28,7 @@ router.post("/sushi/create", function(req, res) {
 });
 
 // put route -> back to index
-route.put("/sushi/:id", function(req, res) {
+router.put("/sushi/:id", function(req, res) {
     sushi.update(req.params.id, function(result) {
         // wrapper for orm.js that using MySQL update callback will return log to console
         // render back to index with handle

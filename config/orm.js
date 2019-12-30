@@ -10,6 +10,16 @@ function printQuestionMarks(num) {
     return arr.toString();
 }
 
+function objToSql(ob) {
+    let arr = [];
+
+    for (let key in ob) {
+        arr.push(key + "=" + ob[key]);
+    }
+
+    return arr.toString();
+}
+
 let orm = {
     all: function(tableInput, cb) {
         let queryString = "SELECT * FROM " + tableInput + ";";

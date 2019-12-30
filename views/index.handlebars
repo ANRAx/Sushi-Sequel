@@ -7,18 +7,19 @@
         <div class="col-md-6 text-center" class="task">
             <div class="row">
                 {{#each sushi_data}}
-                {{#unless this.devoured}}
-                <div class="col-md-9 text-center">
-                    <pre>{{this.id}}. {{this.sushi_name}}</pre>
-                    <!-- {{this.Date}} -->
-                </div>
-                <div class="col-md-3 text-center">
-                    <form class="devour-form button-size">
-                        <input input type="hidden" class="sushi_id" type="text" value={{this.id}}><br>
-                        <button type="submit" class="btn btn-default">Devour it!</button>
-                    </form>
-                </div>
-                {{/unless}}
+                    {{#unless this.devoured}}
+                        <div class="col-md-9 text-center">
+                            <pre>{{this.id}}. {{this.sushi_name}}
+                            </pre>
+                            <!-- {{this.Date}} -->
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <form class="devour-form button-size">
+                                <input input type="hidden" class="sushi_id" type="text" value={{this.id}}><br>
+                                <button type="submit" class="btn btn-default">Devour it!</button>
+                            </form>
+                        </div>
+                    {{/unless}}
                 {{/each}}
             </div>
         </div>

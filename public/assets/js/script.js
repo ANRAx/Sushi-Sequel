@@ -3,7 +3,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         let sushi_id = $(this).children(".sushi_id").val();
-        console.log(sushi_id);;
+        console.log(sushi_id);
         $.ajax({
             method: "PUT",
             url: "/sushi/" + sushi_id
