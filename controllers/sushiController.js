@@ -26,3 +26,17 @@ router.post("/sushi/create", function(req, res) {
         res.redirect("/");
     });
 });
+
+// put route -> back to index
+route.put("/sushi/:id", function(req, res) {
+    sushi.update(req.params.id, function(result) {
+        // wrapper for orm.js that using MySQL update callback will return log to console
+        // render back to index with handle
+        console.log(result);
+        // Send back response and let page reload from .then in AJAX
+        res.sendStatus(200);
+    });
+});
+
+module.exports = router; 
+
