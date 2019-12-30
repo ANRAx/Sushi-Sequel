@@ -8,11 +8,11 @@ router.get("/", function(req, res) {
     res.redirect("/sushi");
 });
 
-router.get("/burgers", function(req, res) {
-    // express callback response by calling burger.selectAllBurger
+router.get("/sushi", function(req, res) {
+    // express callback response by calling sushi.selectAllsushi
    sushi.all(function(sushiData) {
         // Wrapper for orm.js thats using MySQL query callback will return bruger_data, render to index with handlebar
-        res.render("index", { sushi_data: shushiData})
+        res.render("index", { sushi_data: sushiData});
     });
 });
 
