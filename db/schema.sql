@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS sushi_db;
 USE sushi_db;
 
-DROP TABLE IF EXISTS sushi_db;
+DROP TABLE IF EXISTS sushi;
 
 CREATE TABLE sushi(
     id int NOT NULL AUTO_INCREMENT,

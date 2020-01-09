@@ -33,8 +33,8 @@ let orm = {
 
     // vals = arry of values that will be saved to cols
     // cols = columns to insert the values into 
-    create: function(tables, cols, vals, cb) {
-        let queryString = "INSERT INTO" + tables;
+    create: function(table, cols, vals, cb) {
+        let queryString = "INSERT INTO" + table;
 
         queryString += " (";
         queryString += cols.toString();
