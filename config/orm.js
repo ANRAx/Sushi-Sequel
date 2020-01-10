@@ -1,3 +1,7 @@
+// ORM (Object Relational Mapping)
+// Write funcs that take inputs and conditions and turn them in to DB commands like SQL
+// ==================================================================
+
 let connection = require("./connection.js");
 
 function printQuestionMarks(num) {
@@ -11,6 +15,7 @@ function printQuestionMarks(num) {
 }
 
 function objToSql(ob) {
+    // column1=value, column2=value2
     let arr = [];
 
     for (let key in ob) {
@@ -30,11 +35,10 @@ let orm = {
             cb(result);
         });
     },
-
     // vals = arry of values that will be saved to cols
     // cols = columns to insert the values into 
     create: function(table, cols, vals, cb) {
-        let queryString = "INSERT INTO" + table;
+        let queryString = "INSERT INTO " + table;
 
         queryString += " (";
         queryString += cols.toString();
@@ -55,23 +59,22 @@ let orm = {
 
     // objColVals = columns and values to be updated
     //  ex: {name: panther, sleepy: true}
-    update: function(table, objColVals, condition, cb) {
-        let queryString = "UPDATE " + table;
+    update: function (table, objColVals, condition, cb) {
+        var queryString = "UPDATE " + table;
 
-        queryString += " SET";
+        queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
+            connection.query(queryString, function (err, result) {
+                if (err) {
+                    throw err;
+                }
+                cb(result);
+            });
+        }
+    };
 
-        connection.query(queryString, function(err, result) {
-            if (err) {
-                throw err;
-            }
-            cb(result);
-        });
-    }
-};
-
-module.exports = orm;
+    module.exports = orm;
